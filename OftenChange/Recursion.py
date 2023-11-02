@@ -64,8 +64,10 @@ class Calculate(Agency):
         self.circulation(self.initialIndexes, 0)
 
     #   循环              成员数 - 1 起始值
+    # 这种循环无法解决重复和去重情况
     def circulation(self, nest, start_value):
-        for i in range(start_value, len(C.hero_database) - (C.population - 1) + nest, 1):
+        #                               英雄数 - 人口数 + 成员数
+        for i in range(start_value, C.hero_n - (C.population - 1) + nest, 1):
             nest = M.member_access(nest, i)
             # 最后一个成员已加入，开始判断
             if nest == C.population:

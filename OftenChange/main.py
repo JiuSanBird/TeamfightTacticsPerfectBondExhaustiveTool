@@ -6,6 +6,8 @@
 英雄数 职业数 种族数 职业最大羁绊组成次数 种族最大羁绊组成次数
 以及以 *** 为开头的注释提及的内容
 """
+import math
+
 from DoNotOftenChange.Decorator import print_statistical_time, is_Timekeeping
 from OftenChange import Configuration as C, GettingData
 from DoNotOftenChange.DirectOutput import DirectOutput

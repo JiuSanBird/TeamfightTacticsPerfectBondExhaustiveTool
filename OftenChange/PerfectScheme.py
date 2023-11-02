@@ -14,9 +14,15 @@ class PerfectScheme(Calculate):
         # if fetter_data[26] != 0:
         #     return True
         # else:
-        return nest < (C.population - 2) or \
-           (nest == (C.population - 2) and self.advance_judge_method(nest)) or \
-           (nest == (C.population - 1) and self.advance_judge_method(nest))
+        # (nest == (C.population - 6) and self.advance_judge_method(nest)) or \ # 468.44秒
+        # (nest == (C.population - 5) and self.advance_judge_method(nest)) or \ # 430.34秒
+        # (nest == (C.population - 4) and self.advance_judge_method(nest)) or \ # 458.05秒
+        # (nest == (C.population - 3) and self.advance_judge_method(nest)) or \ # 422.98
+        # (nest == (C.population - 2) and self.advance_judge_method(nest)) or \ # 513.93
+        return nest < (C.population - 3) or \
+            (nest == (C.population - 3) and self.advance_judge_method(nest)) or \
+            (nest == (C.population - 2) and self.advance_judge_method(nest)) or \
+            (nest == (C.population - 1) and self.advance_judge_method(nest))
 
     @timekeeping
     def advance_judge_method(self, nest):
