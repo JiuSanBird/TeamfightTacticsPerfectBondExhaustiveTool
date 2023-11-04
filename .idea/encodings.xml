@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/OftenChange/a.csv" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/OftenChange/h.csv" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/OftenChange/hs.csv" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/OftenChange/hss.csv" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/OftenChange/hsss.csv" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/OftenChange/shan.csv" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/OftenChange/tttt.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/OC/a.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/OC/h.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/OC/hs.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/OC/hss.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/OC/hsss.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/OC/shan.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/OC/tttt.csv" charset="GBK" />
     <file url="file://$PROJECT_DIR$/shan.csv" charset="GBK" />
   </component>
 </project>
