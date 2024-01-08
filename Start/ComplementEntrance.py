@@ -6,7 +6,7 @@ from OC import MemberAccessAndExit as M
 
 
 # 补全计划,出已有单位,然后补全
-#
+# 22 53 58 21 11 6 33
 
 def print_list(list):
     for i in range(0, len(list), 1):

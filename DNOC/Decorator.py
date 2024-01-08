@@ -1,5 +1,10 @@
-# 装饰器
 import time
+
+# 装饰器
+# 使用方法:
+# 1.在想要计时的方法上添加依赖@timekeeping
+# 2.打开is_Timekeeping = True
+# 注意,计时行为同样也耗时,所以在结束计时后请撤回以上操作
 
 # 是否计时
 is_Timekeeping = False

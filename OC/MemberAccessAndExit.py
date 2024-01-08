@@ -1,9 +1,8 @@
-from DNOC.Decorator import timekeeping
 from OC import Configuration as C
 
 
-@timekeeping
-# 成员加入 耗时约24秒
+# 成员加入 耗时约6秒
+# @timekeeping
 def member_access(nest, heroIndexes):
     # 成员加入套路数据库
     C.r_database[nest] = heroIndexes
@@ -18,8 +17,8 @@ def member_access(nest, heroIndexes):
     return nest + 1
 
 
-# 成员退出 耗时约23秒
-@timekeeping
+# 成员退出 耗时约6秒
+# @timekeeping
 def member_exit(nest, heroIndexes):
     for i in range(1, len(C.hero_database[heroIndexes])):
         C.fetter_data[C.hero_database[heroIndexes][i]] -= 1

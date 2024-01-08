@@ -8,8 +8,8 @@ fetter_ID = [0, ]
 link_name = re.compile(',"displayName":"(.*?)"')
 link_jobs = re.compile(',"jobIds":"(.*?)"')
 link_races = re.compile(',"raceIds":"(.*?)"')
-link_jobId = re.compile('"jobId":"(....)"')
-link_raceId = re.compile('"raceId":"(....)",')
+link_jobId = re.compile('"jobId":"(.....)"')
+link_raceId = re.compile('"raceId":"(.....)",')
 
 link_name_f = re.compile(',"name":"(.*?)"')
 # 阶段提取规则
@@ -22,9 +22,6 @@ def execute():
     get_race()
     get_chess()
     remedial_work()
-    # 将列表转换为元组,提高效率 节约35秒
-    C.hero_database = tuple(C.hero_database)
-    C.fetter_database = tuple(C.fetter_database)
 
 
 def get_job():
@@ -39,8 +36,8 @@ def get_job():
         date_h[0] = re.findall(link_name_f, html)[i]
         for m in range(initial_value, len(l), 1):
             # 注意:如果出现下一个的最少羁绊需求 > 本羁绊需求的最大值,那么就要根据情况修改
-            # *** 女皇
-            if i == 3 or i == 13:
+            # *** 双修出道
+            if i == 2:
                 for n in range(0, m - initial_value + 1, 1):
                     date_h[n + 1] = int(l[initial_value + n])
                 initial_value = m + 1
@@ -57,15 +54,15 @@ def get_job():
                 # 最后一个装弹
                 for n in range(0, m - initial_value + 1, 1):
                     date_h[n + 1] = int(l[initial_value + n])
+        # print(date_h)
         C.fetter_database[i + 1] = date_h
     # 生成修正表
     global fetter_ID
     fetter_ID += list(map(int, re.findall(link_jobId, html)))
     # *** 召唤物
     # fetter_ID.pop()
-    fetter_ID.remove(9018)
-    C.fetter_database[14] = ['海洋之灾', 1]
-    C.fetter_database[15] = ['征服者', 2, 4, 6]
+    # fetter_ID.remove(9018)
+    # C.fetter_database[14] = ['海洋之灾', 1]
     print("职业羁绊数据库已建立")
 
 
@@ -80,14 +77,14 @@ def get_race():
         date_h[0] = re.findall(link_name_f, html)[i]
         for m in range(initial_value, len(l), 1):
             # 注意:如果出现下一个的最少羁绊需求 > 本羁绊需求的最大值,那么就要根据情况修改
-            # *** 暗裔
-            if i == 1:
+            # *** 戏命师
+            if i == 1 or i == 3 or i == 13:
                 for n in range(0, m - initial_value + 1, 1):
                     date_h[n + 1] = int(l[initial_value + n])
                 initial_value = m + 1
                 # *** 暗裔修正
-                date_h[2] = 2
-                initial_value += 1
+                # date_h[2] = 2
+                # initial_value += 1
                 break
             if m < len(l) - 1:
                 if l[m + 1] <= l[m]:
@@ -139,8 +136,6 @@ def remedial_work():
 
     # *** 修正英雄羁绊错误
     # C.hero_database[16] = ['众星之子', 16, 20]
-    C.hero_database[57] = ['瑟提',  7, 20]
-    C.hero_database[58] = ['奎桑提', 1, 23]
     # C.hero_database.remove()
 
     # 排除0
@@ -148,4 +143,9 @@ def remedial_work():
         while list != 0 and 0 in list:
             list.remove(0)
 
-    # C.hero_database.sort(key=lambda x: len(x), reverse=True) # 412.24秒
+    # 根据羁绊数量进行倒序排序
+    C.hero_database.sort(key=lambda x: len(x), reverse=True)
+
+    # 将列表转换为元组,提高效率 节约35秒
+    C.hero_database = tuple(C.hero_database)
+    C.fetter_database = tuple(C.fetter_database)

@@ -1,5 +1,27 @@
 from OC import Configuration as C
-from OC.Recursion import Calculate, get_difference_sum, generate_content
+from OC.Recursion import Calculate, generate_content
+
+
+def get_difference_sum(tolerate):
+    difference_sum = 0
+    for i in range(1, len(C.fetter_data)):
+        # 有此羁绊
+        if C.fetter_data[i] != 0:
+            for l in range(1, len(C.fetter_database[i])):
+                difference = C.fetter_database[i][l] - C.fetter_data[i]
+                if difference == 0:
+                    break
+                else:
+                    if difference > 0:
+                        if l == 1:
+                            difference_sum += C.fetter_data[i]
+                        else:
+                            difference_sum += C.fetter_data[i] - C.fetter_database[i][l - 1]
+                        # 已经无法容忍,直接返回
+                        if difference_sum > tolerate:
+                            return difference_sum
+                        break
+    return difference_sum
 
 
 # 羁绊补全方案
