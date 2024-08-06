@@ -1,13 +1,14 @@
 hero_n = 60  # 英雄数
-job_n = 14  # 职业数
-race_n = 15  # 种族数
-fetter_n = job_n + race_n + 1 # 羁绊数量
+hero_n_virtual = 73  # 虚的英雄数 有一些棋子为无效数据
+job_n = 11  # 职业数
+race_n = 16  # 种族数
+fetter_n = job_n + race_n + 1  # 羁绊数量
 job_max = 4  # 职业最大羁绊组成次数
 race_max = 4  # 种族最大羁绊组成次数
-population = 9  # 人口数
+population = 8  # 人口数
 
 # 英雄数据库
-hero_database = [0] * hero_n
+hero_database = [0] * hero_n_virtual
 # 羁绊数据库
 fetter_database = [0] * fetter_n
 

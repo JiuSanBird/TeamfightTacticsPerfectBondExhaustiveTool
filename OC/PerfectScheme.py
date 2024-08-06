@@ -23,7 +23,8 @@ class PerfectScheme(Calculate):
         return True
 
     def last_step(self):
-        if 3 in C.r_database and 11 in C.r_database:
-            return
+        # **双修出道
+        # if 3 in C.r_database and 11 in C.r_database:
+        #     return
         content = generate_content()
         self.solution.solution(content)

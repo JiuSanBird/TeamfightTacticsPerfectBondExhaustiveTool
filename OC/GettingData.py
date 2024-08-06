@@ -25,7 +25,9 @@ def execute():
 
 
 def get_job():
-    url = "https://game.gtimg.cn/images/lol/act/img/tft/js/job.js"
+    # https://game.gtimg.cn/images/lol/act/img/tft/js/14.2stars-2024.S3/job.js
+    # https://game.gtimg.cn/images/lol/act/img/tft/js/job.js
+    url = "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/job.js"
     html = Network.ask_url(url)
     initial_value = 0  # 起始值
     # 返回string中所有与pattern匹配的全部字符串,返回形式为数组
@@ -37,7 +39,7 @@ def get_job():
         for m in range(initial_value, len(l), 1):
             # 注意:如果出现下一个的最少羁绊需求 > 本羁绊需求的最大值,那么就要根据情况修改
             # *** 双修出道
-            if i == 2:
+            if i == -1:
                 for n in range(0, m - initial_value + 1, 1):
                     date_h[n + 1] = int(l[initial_value + n])
                 initial_value = m + 1
@@ -60,14 +62,16 @@ def get_job():
     global fetter_ID
     fetter_ID += list(map(int, re.findall(link_jobId, html)))
     # *** 召唤物
-    # fetter_ID.pop()
+    fetter_ID.pop()
     # fetter_ID.remove(9018)
     # C.fetter_database[14] = ['海洋之灾', 1]
     print("职业羁绊数据库已建立")
 
 
 def get_race():
-    url = "https://game.gtimg.cn/images/lol/act/img/tft/js/race.js"
+    # https://game.gtimg.cn/images/lol/act/img/tft/js/14.2stars-2024.S3/race.js
+    # https://game.gtimg.cn/images/lol/act/img/tft/js/race.js
+    url = "https://game.gtimg.cn/images/lol/act/img/tft/js/14.15-2024.S12/race.js"
     html = Network.ask_url(url)
     # 起始值
     initial_value = 0
@@ -77,8 +81,8 @@ def get_race():
         date_h[0] = re.findall(link_name_f, html)[i]
         for m in range(initial_value, len(l), 1):
             # 注意:如果出现下一个的最少羁绊需求 > 本羁绊需求的最大值,那么就要根据情况修改
-            # *** 戏命师
-            if i == 1 or i == 3 or i == 13:
+            # *** 佣兵
+            if i == 2 or i == 4 or i == 6 or i == 16:
                 for n in range(0, m - initial_value + 1, 1):
                     date_h[n + 1] = int(l[initial_value + n])
                 initial_value = m + 1
@@ -103,11 +107,13 @@ def get_race():
 
 # 获取棋子
 def get_chess():
+    # https://game.gtimg.cn/images/lol/act/img/tft/js/14.2stars-2024.S3/chess.js
+    # https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js
     url = "https://game.gtimg.cn/images/lol/act/img/tft/js/chess.js"
     html = Network.ask_url(url)
     # 仅以次注释，纪念我浪费的7个小时，在动态网页和411的先后折磨中逝去
     # data = bytes(urllib.parse.urlencode({"name": "eric"}), encoding="utf-8") #数据包
-    for i in range(C.hero_n):
+    for i in range(C.hero_n_virtual):
         date_h = [0] * 5
         # 名字
         date_h[0] = re.findall(link_name, html)[i]
@@ -145,6 +151,10 @@ def remedial_work():
 
     # 根据羁绊数量进行倒序排序
     C.hero_database.sort(key=lambda x: len(x), reverse=True)
+    # 修正列表长度
+    C.hero_database = C.hero_database[:C.hero_n]
+    # *** 修正英雄羁绊错误
+    C.hero_database[59] = ['孙悟空', 17]
 
     # 将列表转换为元组,提高效率 节约35秒
     C.hero_database = tuple(C.hero_database)

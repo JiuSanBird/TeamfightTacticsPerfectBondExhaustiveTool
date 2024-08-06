@@ -11,10 +11,10 @@ def ask_url(url):
                       "Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3776.400 QQBrowser/10.6.4212.400 "}
     # 请求对象（封装）
     request = urllib.request.Request(url=url, headers=headers, method="GET")
-    # 响应对象
-    # 得到指定一个URL的网页内容
+    # 发送请求并获取响应内容
     response = urllib.request.urlopen(request)
     html = response.read().decode('utf-8')
+    # 使用 BeautifulSoup 解析 HTML
     html = BeautifulSoup(html, "html.parser")
     html = html.encode('utf-8').decode('unicode_escape')  # 版本答案
 
